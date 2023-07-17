@@ -1,11 +1,15 @@
 import Banner from "./Banner";
 import Ipod from "./Ipod";
+import TrackList from "./TrackList";
 
 const MainContent = () => {
   return (
-    <div className="w-full col-span-10 bg-[#f4f4f4] rounded-l-3xl grid grid-cols-12">
+    <div className="w-full col-span-10 bg-[#f4f4f4] rounded-l-3xl">
       <Banner />
-      <Ipod />
+      <div className="flex flex-col justify-center ">
+        <Ipod />
+      </div>
+      <TrackList />
     </div>
   );
 };
