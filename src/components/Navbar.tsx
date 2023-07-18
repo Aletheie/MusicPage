@@ -4,6 +4,7 @@ import layer from "../assets/Layers_fill.svg";
 import add from "../assets/Chat_plus_fill.svg";
 import headphone from "../assets/Headphones_fill.svg";
 import login from "../assets/Sign_in_squre_fill.svg";
+import Player from "./Player";
 
 const linksData = [
   { icon: home, text: "Home", textColor: "text-black" },
@@ -30,6 +31,7 @@ const Navbar = () => {
           />
         ))}
       </div>
+      <Player />
       <Link icon={login} text="Login" textColor="text-black" divParams="mb-7" />
     </div>
   );
