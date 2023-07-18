@@ -2,7 +2,7 @@ import Track from "./Track";
 
 const TrackList = () => {
   return (
-    <div className=" text-left ml-[55%] mt-20 font-bold text-3xl h-full ">
+    <div className=" text-left ml-[60%] mt-16 font-bold text-3xl ">
       <p className="">Top Tracks</p>
       <Track />
       <Track />

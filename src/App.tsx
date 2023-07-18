@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <section className="grid grid-cols-12 h-screen bg-[#ededed]">
+    <section className="grid grid-cols-12 w-full h-screen bg-[#ededed]">
       <Navbar />
       <MainContent />
     </section>
