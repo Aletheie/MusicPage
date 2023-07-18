@@ -40,7 +40,7 @@ const BottomPlayer = () => {
         onMouseOut={() => handleMouseOut("playerLeft")}
         src={hover.playerLeft}
         alt="player left"
-        className="h-4 hover:black"
+        className="h-4"
       />
       <img
         onMouseOver={() => handleMouseOver("player")}
