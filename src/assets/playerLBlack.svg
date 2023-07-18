@@ -1,6 +1,6 @@
 <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Group 15">
-<path id="Polygon 4" d="M2 11L18.5 1.47372L18.5 20.5263L2 11Z" fill="#000"/>
-<path id="Line 9" d="M2 5L2 17" stroke="#000" stroke-width="4" stroke-linecap="square"/>
+<path id="Polygon 4" d="M2 11L18.5 1.47372L18.5 20.5263L2 11Z" fill="#4A4A4A"/>
+<path id="Line 9" d="M2 5L2 17" stroke="#4A4A4A" stroke-width="4" stroke-linecap="square"/>
 </g>
 </svg>
