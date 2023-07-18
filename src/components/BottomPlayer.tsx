@@ -34,7 +34,7 @@ const BottomPlayer = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto mt-20 h-16 rounded-xl bg-[#ededed] flex justify-center items-center gap-3">
+    <div className="w-11/12 mx-auto mt-24 h-16 rounded-xl bg-[#ededed] flex justify-center items-center gap-3">
       <img
         onMouseOver={() => handleMouseOver("playerLeft")}
         onMouseOut={() => handleMouseOut("playerLeft")}
