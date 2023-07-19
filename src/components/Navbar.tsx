@@ -44,7 +44,7 @@ const Navbar = () => {
         text="Login"
         textColor="text-black"
         divParams="mb-7"
-        path="/"
+        path="/login"
       />
     </div>
   );
