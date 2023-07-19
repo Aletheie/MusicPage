@@ -1,43 +1,28 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import player from "../assets/PlayerButton.svg";
-import playerBlack from "../assets/PlayerButtonBlack.svg";
-import playerR from "../assets/PlayerR.svg";
-import playerRBlack from "../assets/playerRBlack.svg";
-import playerL from "../assets/PlayerL.svg";
-import playerLBlack from "../assets/playerLBlack.svg";
-import music from "../assets/music/fairytale.mp3";
+import {
+  AiFillPlayCircle,
+  AiFillCaretLeft,
+  AiFillCaretRight,
+} from "react-icons/ai";
 import { useState } from "react";
 import useSound from "use-sound";
 import useMusicStore from "../stores/musicStore";
 
+import music from "../assets/music/fairytale.mp3";
+
 const BottomPlayer = () => {
-  const [hover, setHover] = useState({
-    playerLeft: playerL,
-    player: player,
-    playerRight: playerR,
-  });
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const [play, { pause }] = useSound(music);
   const { isPlaying, setIsPlaying } = useMusicStore();
 
-  const handleMouseOver = (key: string) => {
-    setHover((prevHover) => ({
-      ...prevHover,
-      [key]:
-        key === "player"
-          ? playerBlack
-          : key === "playerLeft"
-          ? playerLBlack
-          : playerRBlack,
-    }));
+  const handleMouseOver = (iconName: string | null) => {
+    setHoveredIcon(iconName);
   };
 
-  const handleMouseOut = (key: string) => {
-    setHover((prevHover) => ({
-      ...prevHover,
-      [key]:
-        key === "player" ? player : key === "playerLeft" ? playerL : playerR,
-    }));
+  const handleMouseOut = () => {
+    setHoveredIcon(null);
   };
 
   const handleClick = () => {
@@ -47,28 +32,31 @@ const BottomPlayer = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto mt-24 h-16 rounded-xl bg-[#ededed] flex justify-center items-center gap-3">
-      <img
-        onMouseOver={() => handleMouseOver("playerLeft")}
-        onMouseOut={() => handleMouseOut("playerLeft")}
-        src={hover.playerLeft}
-        alt="player left"
-        className="h-4"
-      />
-      <img
-        onMouseOver={() => handleMouseOver("player")}
-        onMouseOut={() => handleMouseOut("player")}
+    <div className="w-11/12 mt-24 mx-auto h-16 rounded-xl bg-[#ededed] flex justify-center items-center gap-3 text-[#4A4A4A]">
+      <AiFillCaretLeft
+        onMouseOver={() => handleMouseOver("caretLeft")}
+        onMouseOut={handleMouseOut}
         onClick={handleClick}
-        src={hover.player}
-        alt="player"
-        className="h-9"
+        className={`h-4 cursor-pointer ${
+          hoveredIcon === "caretLeft" ? "text-black" : ""
+        }`}
       />
-      <img
-        onMouseOver={() => handleMouseOver("playerRight")}
-        onMouseOut={() => handleMouseOut("playerRight")}
-        src={hover.playerRight}
-        alt="player right"
-        className="h-4"
+      <AiFillPlayCircle
+        size={60}
+        onMouseOver={() => handleMouseOver("play")}
+        onMouseOut={handleMouseOut}
+        onClick={handleClick}
+        className={`h-9 cursor-pointer ${
+          hoveredIcon === "play" ? "text-black" : ""
+        }`}
+      />
+      <AiFillCaretRight
+        onMouseOver={() => handleMouseOver("caretRight")}
+        onMouseOut={handleMouseOut}
+        onClick={handleClick}
+        className={`h-4 cursor-pointer ${
+          hoveredIcon === "caretRight" ? "text-black" : ""
+        }`}
       />
     </div>
   );

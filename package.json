@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-icons": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^3.0.0",
     "react-router-dom": "6.10.0",
     "react-svg": "^16.1.18",
     "use-sound": "^4.0.1",
