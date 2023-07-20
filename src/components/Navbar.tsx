@@ -8,13 +8,13 @@ import Player from "./Player";
 
 const linksData = [
   { icon: home, text: "Home", path: "/" },
+  { icon: add, text: "Add", path: "/songs/add" },
   {
     icon: layer,
     text: "Albums",
 
     path: "/albums",
   },
-  { icon: add, text: "Add", path: "/songs/add" },
   {
     icon: headphone,
     text: "Lana Del Rey",
