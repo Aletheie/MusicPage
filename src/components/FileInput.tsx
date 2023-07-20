@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 const FileInput = () => {
-  const [selectedFile, setSelectedFile] = useState(undefined);
+  const [selectedFile, setSelectedFile] = useState(null as File | null);
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    //FIXME: handle this type error
-    setSelectedFile(e.target.files[0]);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0] : null;
+    setSelectedFile(file);
   };
 
   return (
@@ -42,7 +42,7 @@ const FileInput = () => {
           id="dropzone-file"
           type="file"
           className="hidden"
-          value={selectedFile}
+          value={selectedFile?.name}
           onChange={handleChange}
         />
       </label>

@@ -14,7 +14,7 @@ import useMusicStore from "../stores/musicStore";
 import music from "../assets/music/fairytale.mp3";
 
 const BottomPlayer = () => {
-  const [hoveredIcon, setHoveredIcon] = useState(null);
+  const [hoveredIcon, setHoveredIcon] = useState(null as string | null);
   const [play, { pause }] = useSound(music);
   const { isPlaying, setIsPlaying } = useMusicStore();
 
