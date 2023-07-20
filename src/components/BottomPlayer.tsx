@@ -5,6 +5,7 @@ import {
   AiFillPlayCircle,
   AiFillCaretLeft,
   AiFillCaretRight,
+  AiFillPauseCircle,
 } from "react-icons/ai";
 import { useState } from "react";
 import useSound from "use-sound";
@@ -40,15 +41,27 @@ const BottomPlayer = () => {
           hoveredIcon === "caretLeft" ? "text-black" : ""
         }`}
       />
-      <AiFillPlayCircle
-        size={60}
-        onMouseOver={() => handleMouseOver("play")}
-        onMouseOut={handleMouseOut}
-        onClick={handleClick}
-        className={`h-9 cursor-pointer ${
-          hoveredIcon === "play" ? "text-black" : ""
-        }`}
-      />
+      {isPlaying ? (
+        <AiFillPauseCircle
+          size={60}
+          onMouseOver={() => handleMouseOver("pause")}
+          onMouseOut={handleMouseOut}
+          onClick={handleClick}
+          className={`h-9 cursor-pointer ${
+            hoveredIcon === "pause" ? "text-black" : ""
+          }`}
+        />
+      ) : (
+        <AiFillPlayCircle
+          size={60}
+          onMouseOver={() => handleMouseOver("play")}
+          onMouseOut={handleMouseOut}
+          onClick={handleClick}
+          className={`h-9 cursor-pointer ${
+            hoveredIcon === "play" ? "text-black" : ""
+          }`}
+        />
+      )}
       <AiFillCaretRight
         onMouseOver={() => handleMouseOver("caretRight")}
         onMouseOut={handleMouseOut}
