@@ -14,7 +14,7 @@ const linksData = [
     textColor: "text-gray-700",
     path: "/albums",
   },
-  { icon: add, text: "Add", textColor: "text-gray-700", path: "/" },
+  { icon: add, text: "Add", textColor: "text-gray-700", path: "/songs/add" },
   {
     icon: headphone,
     text: "Lana Del Rey",

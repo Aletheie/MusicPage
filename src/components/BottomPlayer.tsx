@@ -36,7 +36,6 @@ const BottomPlayer = () => {
       <AiFillCaretLeft
         onMouseOver={() => handleMouseOver("caretLeft")}
         onMouseOut={handleMouseOut}
-        onClick={handleClick}
         className={`h-4 cursor-pointer ${
           hoveredIcon === "caretLeft" ? "text-black" : ""
         }`}
@@ -53,7 +52,6 @@ const BottomPlayer = () => {
       <AiFillCaretRight
         onMouseOver={() => handleMouseOver("caretRight")}
         onMouseOut={handleMouseOut}
-        onClick={handleClick}
         className={`h-4 cursor-pointer ${
           hoveredIcon === "caretRight" ? "text-black" : ""
         }`}

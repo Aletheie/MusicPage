@@ -3,6 +3,7 @@ import Layout from "./pages/Layout";
 import HomePage from "./pages/HomePage";
 import Albums from "./pages/Albums";
 import Login from "./pages/Login";
+import AddSong from "./pages/AddSong";
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
 const router = createBrowserRouter([
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "/albums", element: <Albums /> },
       { path: "/login", element: <Login /> },
+      { path: "/songs/add", element: <AddSong /> },
     ],
   },
 ]);
