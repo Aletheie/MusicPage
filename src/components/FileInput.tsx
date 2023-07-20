@@ -4,6 +4,7 @@ const FileInput = () => {
   const [selectedFile, setSelectedFile] = useState(undefined);
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    //FIXME: handle this type error
     setSelectedFile(e.target.files[0]);
   };
 
