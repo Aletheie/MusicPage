@@ -4,7 +4,7 @@ interface Props {
 
 const TextInput = ({ placeholder }: Props) => {
   return (
-    <div className="w-4/5 mx-auto mt-3">
+    <div className="w-4/5 mx-auto mt-4">
       <input
         type="text"
         id="first_name"

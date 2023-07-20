@@ -5,17 +5,23 @@ import TextInput from "./TextInput";
 
 const AddSongInputGroup = () => {
   return (
-    <div className="flex justify-center w-full h-screen items-center">
+    <form
+      action=""
+      className="flex justify-center w-full h-screen items-center relative"
+    >
       <div className="w-1/3 h-2/3 rounded-3xl shadow-xl bg-[#f4f4f4]">
-        <div className="w-full bg-gradient-to-br from-fuchsia-900 via-violet-500 to-indigo-300 h-1/3  rounded-t-3xl"></div>
+        <div className="w-full bg-gradient-to-br from-fuchsia-900 via-violet-500 to-indigo-300 h-1/4  rounded-t-3xl"></div>
         <img src={cd} alt="cd image" className="floating mx-auto -mt-10" />
         <FileInput />
-        <div className="mt-6">
+        <div className="mt-8">
           <TextInput placeholder="Song name" />
           <TextInput placeholder="Song author" />
         </div>
+        <button className="w-1/3 bg-[#ededed] hover:bg-[#eaeaea] h-[8%] rounded-b-3xl absolute bottom-32">
+          <span className="font-semibold text-gray-500">Submit</span>
+        </button>
       </div>
-    </div>
+    </form>
   );
 };
 
