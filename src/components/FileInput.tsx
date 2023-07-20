@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 const FileInput = () => {
+  const [selectedFile, setSelectedFile] = useState(undefined);
+
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
   return (
     <div className="flex items-center justify-center w-full mt-8">
       <label
@@ -29,7 +37,13 @@ const FileInput = () => {
             MP3 (MAX. 10MB)
           </p>
         </div>
-        <input id="dropzone-file" type="file" className="hidden" />
+        <input
+          id="dropzone-file"
+          type="file"
+          className="hidden"
+          value={selectedFile}
+          onChange={handleChange}
+        />
       </label>
     </div>
   );

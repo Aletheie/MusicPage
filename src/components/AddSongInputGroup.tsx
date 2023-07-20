@@ -4,6 +4,11 @@ import FileInput from "./FileInput";
 import TextInput from "./TextInput";
 
 const AddSongInputGroup = () => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log("form submitted");
+  };
+
   return (
     <form
       action=""
@@ -17,7 +22,10 @@ const AddSongInputGroup = () => {
           <TextInput placeholder="Song name" />
           <TextInput placeholder="Song author" />
         </div>
-        <button className="w-1/3 bg-[#ededed] hover:bg-[#eaeaea] h-[8%] rounded-b-3xl absolute bottom-32">
+        <button
+          onSubmit={handleFormSubmit}
+          className="w-1/3 bg-[#ededed] hover:bg-[#eaeaea] h-[8%] rounded-b-3xl absolute bottom-32"
+        >
           <span className="font-semibold text-gray-500">Submit</span>
         </button>
       </div>
