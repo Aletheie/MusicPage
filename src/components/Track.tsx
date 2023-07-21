@@ -7,7 +7,7 @@ interface Props {
 
 const Track = ({ songName, author }: Props) => {
   return (
-    <div className="w-4/5 md:w-8/12 mt-4 h-16 rounded-xl bg-[#ededed] flex items-center">
+    <div className="w-4/5 md:w-8/12 mt-6 md:mt-4 h-16 rounded-xl bg-[#ededed] flex items-center">
       <div className="bg-[#f4f4f4] w-12 h-12 rounded-lg ml-2"></div>
       <div className=" text-sm ml-4">
         <p>{songName}</p>
