@@ -33,7 +33,7 @@ const BottomPlayer = () => {
   };
 
   return (
-    <div className="w-11/12 mt-24 mx-auto h-16 rounded-xl bg-[#ededed] flex justify-center items-center gap-3 text-[#4A4A4A]">
+    <div className="w-11/12 absolute bottom-7 left-0 right-0 m-auto h-16 rounded-xl bg-[#ededed] flex justify-center items-center gap-3 text-[#4A4A4A]">
       <AiFillCaretLeft
         onMouseOver={() => handleMouseOver("caretLeft")}
         onMouseOut={handleMouseOut}

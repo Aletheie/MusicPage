@@ -26,8 +26,8 @@ const linksData = [
 
 const Navbar = () => {
   return (
-    <div className="w-full col-span-2 bg-[#ededed] flex flex-col justify-between">
-      <div>
+    <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col justify-between">
+      <div className="">
         {linksData.map((link, index) => (
           <Link
             key={index}
