@@ -6,7 +6,7 @@ const Ipod = () => {
     <img
       src={ipod}
       alt="ipod"
-      className="w-2/3 md:w-3/5 absolute -left-10 md:left-35 floating"
+      className="w-2/3 md:w-3/5 absolute -left-5 md:left-35 floating"
     />
   );
 };
