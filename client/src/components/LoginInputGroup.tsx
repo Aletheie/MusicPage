@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../index.css";
 import TextInput from "./TextInput";
 
@@ -8,6 +9,13 @@ interface Props {
 }
 
 const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  //make axios post request to /api/users/login
+  //make axios post request to /api/users/signup
+
   const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("form submitted");
@@ -23,9 +31,26 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
           <div className="w-full bg-gradient-to-br from-fuchsia-900 via-violet-500 to-indigo-300 h-1/4  rounded-t-3xl "></div>
           <img src={icon} alt="cd image" className="floating mx-auto -mt-10" />
           <div className="mt-5 lg:mt-8">
-            {oneMoreInput && <TextInput placeholder="Username" type="text" />}
-            <TextInput placeholder="Email" type="email" />
-            <TextInput placeholder="Password" type="password" />
+            {oneMoreInput && (
+              <TextInput
+                placeholder="Username"
+                type="text"
+                setInputText={setUsername}
+                inputText={username}
+              />
+            )}
+            <TextInput
+              placeholder="Email"
+              type="email"
+              setInputText={setEmail}
+              inputText={email}
+            />
+            <TextInput
+              placeholder="Password"
+              type="password"
+              setInputText={setPassword}
+              inputText={password}
+            />
           </div>
           <button
             onSubmit={handleFormSubmit}

@@ -1,8 +1,9 @@
-import { useState } from "react";
+interface Props {
+  setSelectedFile: (file: File | null) => void;
+  selectedFile: File | null;
+}
 
-const FileInput = () => {
-  const [selectedFile, setSelectedFile] = useState(null as File | null);
-
+const FileInput = ({ setSelectedFile, selectedFile }: Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     setSelectedFile(file);

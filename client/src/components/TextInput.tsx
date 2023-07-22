@@ -1,12 +1,11 @@
-import { useState } from "react";
-
 interface Props {
   placeholder: string;
   type: string;
+  setInputText: (text: string) => void;
+  inputText: string;
 }
 
-const TextInput = ({ placeholder, type }: Props) => {
-  const [inputText, setInputText] = useState("");
+const TextInput = ({ placeholder, type, setInputText, inputText }: Props) => {
   return (
     <div className="w-4/5 mx-auto mt-4">
       <input
