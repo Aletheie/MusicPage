@@ -2,7 +2,7 @@ import AddSongInputGroup from "../components/AddSongInputGroup";
 
 const AddSong = () => {
   return (
-    <div className="w-full h-screen col-span-10 bg-[#f4f4f4] rounded-l-3xl shadow-md overflow-hidden">
+    <div className="w-full h-screen col-span-12 lg:col-span-10 bg-[#f4f4f4] rounded-l-3xl shadow-md overflow-hidden">
       <AddSongInputGroup />
     </div>
   );
