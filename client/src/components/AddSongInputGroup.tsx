@@ -20,7 +20,7 @@ const AddSongInputGroup = () => {
     }
     console.log(formData);
     axios
-      .post("http://localhost:5000/api/songs", formData, {
+      .post("http://localhost:8080/api/songs", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -32,7 +32,8 @@ const AddSongInputGroup = () => {
   return (
     <div className="w-full h-screen lg:transform lg:transition lg:duration-700 lg:hover:scale-105">
       <form
-        action=""
+        typeof="multipart/form-data"
+        method="post"
         className="flex justify-center w-full h-screen items-center relative"
       >
         <div className="w-3/4 md:w-1/2 lg:w-1/3  h-2/3 rounded-3xl shadow-xl bg-[#f4f4f4]">
@@ -55,6 +56,7 @@ const AddSongInputGroup = () => {
           </div>
           <button
             onSubmit={handleFormSubmit}
+            onClick={handleFormSubmit}
             className="w-3/4 md:w-1/2 lg:w-1/3 bg-[#ededed] hover:bg-[#eaeaea] h-[8%] rounded-b-3xl absolute bottom-32 lg:bottom-32"
           >
             <span className="font-semibold text-gray-500">Submit</span>

@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "proxy": "http://localhost:8080",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "concurrently \"tsc --watch\" \"nodemon -q ./dist/index.js\""
+    "dev": "concurrently \"tsc --watch\" \"nodemon -q ./dist/app.js\""
   },
   "keywords": [],
   "author": "",
