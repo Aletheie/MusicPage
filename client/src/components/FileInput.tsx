@@ -22,8 +22,12 @@ const FileInput = ({ setSelectedFile, selectedFile }: Props) => {
         <div className="flex flex-col items-center justify-center pt-5 pb-6">
           <AiOutlineCloudUpload className="w-12 h-12 text-violet-500 hover:text-violet-600 dark:text-gray-400" />
           <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-            <span className="font-semibold">Click to upload</span> or drag and
-            drop
+            <span className="font-semibold">
+              {selectedFile ? selectedFile.name : "Click to upload"}
+            </span>
+          </p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            {!selectedFile && "or drag and drop"}
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-400">
             MP3 (MAX. 10MB)
@@ -32,8 +36,8 @@ const FileInput = ({ setSelectedFile, selectedFile }: Props) => {
         <input
           id="dropzone-file"
           type="file"
+          name={selectedFile ? selectedFile.name : ""}
           className="hidden"
-          value={selectedFile?.name || ""}
           onChange={handleChange}
         />
       </label>
