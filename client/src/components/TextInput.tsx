@@ -8,7 +8,7 @@ interface Props {
 const TextInput = ({ placeholder, type }: Props) => {
   const [inputText, setInputText] = useState("");
   return (
-    <div className="w-4/5 mx-auto mt-4 md:mt-5 lg:mt-4">
+    <div className="w-4/5 mx-auto mt-4">
       <input
         type={type}
         id="first_name"
