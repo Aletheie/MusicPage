@@ -6,7 +6,9 @@ interface Props {
 const FileInput = ({ setSelectedFile, selectedFile }: Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
-    setSelectedFile(file);
+    if (file) {
+      setSelectedFile(file);
+    }
   };
 
   return (
@@ -43,7 +45,7 @@ const FileInput = ({ setSelectedFile, selectedFile }: Props) => {
           id="dropzone-file"
           type="file"
           className="hidden"
-          value={selectedFile?.name}
+          value={selectedFile?.name || ""}
           onChange={handleChange}
         />
       </label>
