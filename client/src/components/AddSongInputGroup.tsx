@@ -10,7 +10,7 @@ const AddSongInputGroup = () => {
   };
 
   return (
-    <div className="w-full h-screen transform transition duration-700 hover:scale-105">
+    <div className="w-full h-screen lg:transform lg:transition lg:duration-700 lg:hover:scale-105">
       <form
         action=""
         className="flex justify-center w-full h-screen items-center relative"
