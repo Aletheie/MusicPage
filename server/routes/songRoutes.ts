@@ -5,7 +5,7 @@ dotenv.config();
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const fileStr = req.body.data;
     console.log(fileStr);
