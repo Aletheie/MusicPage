@@ -16,6 +16,10 @@ const AddSongInputGroup = () => {
     formData.append("songName", songName);
     formData.append("songAuthor", songAuthor);
     formData.append("songFile", songFile as File);
+    console.log(songName);
+    console.log(songAuthor);
+    console.log(songFile);
+    console.log(formData);
     axios
       .post("http://localhost:8080/api/songs", formData, {
         headers: {
