@@ -16,23 +16,12 @@ dotenv.config();
 
 const router = express.Router();
 
+const uploadSingle = upload().single("songFile");
+
 router.post(
   "/",
-  upload.single("songFile"),
-  async (req: Request<{}, {}, Song>, res: Response) => {
-    const { songName, songAuthor } = req.body;
-    const songFile = req.file;
-    if (!songName) {
-      return res.send("Please enter song name");
-    }
-    try {
-      console.log(songName, songAuthor, songFile);
-      res.send(req.body);
-    } catch (error) {
-      console.log(error);
-      res.send(error);
-    }
-  }
+  uploadSingle,
+  async (req: Request<{}, {}, Song>, res: Response) => {}
 );
 
 export default router;
