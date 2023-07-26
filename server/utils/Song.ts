@@ -1,4 +1,4 @@
-interface Song {
+interface SongType {
   songName: string;
   songAuthor: string;
   songFile: {
@@ -7,4 +7,4 @@ interface Song {
   };
 }
 
-export default Song;
+export default SongType;

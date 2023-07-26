@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Song from "../../utils/Song.js";
+import SongType from "../../utils/Song.js";
 const Schema = mongoose.Schema;
 
 const SongSchema = new Schema({
@@ -13,4 +13,4 @@ const SongSchema = new Schema({
   //user: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
-export default mongoose.model<Song & mongoose.Document>("Song", SongSchema);
+export default mongoose.model<SongType & mongoose.Document>("Song", SongSchema);

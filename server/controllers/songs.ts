@@ -1,12 +1,12 @@
-import Song from "../utils/Song.js";
-import song from "../mongoDB/models/song.js";
+import SongType from "../utils/Song.js";
+import Song from "../mongoDB/models/song.js";
 import { Request, Response } from "express";
 
-const createSong = async (req: Request<{}, {}, Song>, res: Response) => {
+const createSong = async (req: Request<{}, {}, SongType>, res: Response) => {
   if (!req.file) {
     return res.status(400).json({ message: "No file uploaded" });
   }
-  const newSong = new song({
+  const newSong = new Song({
     songName: req.body.songName,
     songAuthor: req.body.songAuthor,
     songFile: {
