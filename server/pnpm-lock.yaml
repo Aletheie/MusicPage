@@ -14,6 +14,9 @@ dependencies:
   '@types/node':
     specifier: ^20.4.2
     version: 20.4.2
+  bcryptjs:
+    specifier: ^2.4.3
+    version: 2.4.3
   cloudinary:
     specifier: ^1.38.0
     version: 1.38.0
@@ -43,6 +46,9 @@ dependencies:
     version: 4.0.0(cloudinary@1.38.0)
 
 devDependencies:
+  '@types/bcryptjs':
+    specifier: ^2.4.2
+    version: 2.4.2
   '@types/multer':
     specifier: ^1.4.7
     version: 1.4.7
@@ -55,6 +61,10 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.11
     dev: false
+
+  /@types/bcryptjs@2.4.2:
+    resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
+    dev: true
 
   /@types/body-parser@1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
@@ -163,6 +173,10 @@ packages:
 
   /array-flatten@1.1.1:
     resolution: {integrity: sha512-PCVAQswWemu6UdxsDFFX/+gVeYqKAod3D3UVm91jHwynguOwAvYPhx8nNlM++NqRcK6CxxpUafjmhIdKiHibqg==}
+    dev: false
+
+  /bcryptjs@2.4.3:
+    resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
     dev: false
 
   /body-parser@1.20.1:
