@@ -20,6 +20,7 @@ const AddSongInputGroup = () => {
       .post("http://localhost:8080/api/songs", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          "With-Credentials": "true",
         },
       })
       .then((res) => {

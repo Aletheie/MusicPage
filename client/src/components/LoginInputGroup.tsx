@@ -17,11 +17,15 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
   const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/api/login", {
-        username,
-        email,
-        password,
-      })
+      .post(
+        "http://localhost:8080/api/login",
+        {
+          username,
+          email,
+          password,
+        },
+        { headers: { "With-Credentials": "true" } }
+      )
       .then((res) => {
         console.log(res);
       })
