@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../index.css";
 import TextInput from "./TextInput";
+import axios from "axios";
 
 interface Props {
   icon: string;
@@ -13,12 +14,18 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  //make axios post request to /api/users/login
-  //make axios post request to /api/users/signup
-
   const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log("form submitted");
+    axios.post("http://localhost:8080/api/user", {
+      username: username,
+      email: email,
+      password: password,
+    });
+    setUsername("");
+    setEmail("");
+    setPassword("");
+
+    console.log(username, email, password);
   };
 
   return (
