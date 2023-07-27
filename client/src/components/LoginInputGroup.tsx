@@ -16,16 +16,18 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    axios.post("http://localhost:8080/api/user", {
-      username: username,
-      email: email,
-      password: password,
-    });
-    setUsername("");
-    setEmail("");
-    setPassword("");
-
-    console.log(username, email, password);
+    axios
+      .post("http://localhost:8080/api/login", {
+        username,
+        email,
+        password,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -61,6 +63,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
           </div>
           <button
             onSubmit={handleFormSubmit}
+            onClick={handleFormSubmit}
             className="w-3/4 md:w-1/2 lg:w-[55%] bg-[#ededed] hover:bg-[#eaeaea] h-[8%] rounded-b-3xl absolute bottom-10 lg:bottom-44"
           >
             <span className="font-semibold text-gray-500">{buttonText}</span>
