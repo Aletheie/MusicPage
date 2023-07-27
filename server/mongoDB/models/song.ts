@@ -10,7 +10,7 @@ const SongSchema = new Schema({
     title: { type: String, required: true },
     type: { type: String, required: true },
   },
-  //user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  user: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 export default mongoose.model<SongType & mongoose.Document>("Song", SongSchema);

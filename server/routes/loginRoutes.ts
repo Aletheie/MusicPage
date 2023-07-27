@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import { Request, Response } from "express";
-import LoginType from "../utils/Login";
+import UserType from "../utils/Login";
 import bcrypt from "bcryptjs";
 import User from "../mongoDB/models/user.js";
 
@@ -15,7 +15,7 @@ router.route("/").get((req, res) => {
 
 router
   .route("/")
-  .post(async (req: Request<{}, {}, LoginType>, res: Response) => {
+  .post(async (req: Request<{}, {}, UserType>, res: Response) => {
     const { username, password, email } = req.body;
     if (username) {
       // Sign up
