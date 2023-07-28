@@ -10,6 +10,6 @@ const router = express.Router();
 
 const uploadSingle = upload().single("songFile");
 
-router.post("/", requireAuth, uploadSingle, createSong);
+router.post("/api/songs", requireAuth, uploadSingle, createSong);
 
 export default router;

@@ -3,10 +3,10 @@ import { createUser } from "../controllers/users.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/api/login", (req, res) => {
   res.send("Helolo");
 });
 
-router.post("/", createUser);
+router.post("/api/login", createUser);
 
 export default router;

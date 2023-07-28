@@ -30,8 +30,8 @@ app.use(
   })
 );
 
-app.use("/api/login", loginRoutes);
-app.use("/api/songs", songRoutes);
+app.use("/", loginRoutes);
+app.use("/", songRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
