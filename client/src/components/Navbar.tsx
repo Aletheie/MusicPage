@@ -11,9 +11,9 @@ const linksData = [
   { icon: add, text: "Add", path: "/songs/add" },
   {
     icon: layer,
-    text: "Albums",
+    text: "Songs",
 
-    path: "/albums",
+    path: "/songs",
   },
   {
     icon: headphone,
