@@ -28,10 +28,13 @@ const Songs = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen col-span-12 lg:col-span-10 bg-[#f4f4f4] rounded-l-3xl shadow-md overflow-hidden flex justify-center flex-col">
-      {songList.map((song, idx) => (
-        <Track key={idx} songName={song.songName} author={song.songAuthor} />
-      ))}
+    <div className="w-full h-screen col-span-12 lg:col-span-10 bg-[#f4f4f4] rounded-l-3xl shadow-md overflow-hidden">
+      <div className="w-2/3 h-screen mx-auto flex justify-center items-center flex-col">
+        <h1 className="text-gray-700 font-bold text-5xl pb-5">All Songs</h1>
+        {songList.map((song, idx) => (
+          <Track key={idx} songName={song.songName} author={song.songAuthor} />
+        ))}
+      </div>
     </div>
   );
 };
