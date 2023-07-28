@@ -24,7 +24,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
           email,
           password,
         },
-        { headers: { "With-Credentials": "true" } }
+        { withCredentials: true }
       )
       .then((res) => {
         console.log(res);

@@ -18,6 +18,7 @@ const AddSongInputGroup = () => {
     formData.append("songFile", songFile as File);
     axios
       .post("http://localhost:8080/api/songs", formData, {
+        withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
           "With-Credentials": "true",
