@@ -2,6 +2,7 @@ import Song from "../mongoDB/models/song.js";
 import { Response } from "express";
 import RequestWithUser from "../utils/RequestWithUser.js";
 import { Session } from "../utils/authMiddleware.js";
+import User from "../mongoDB/models/user.js";
 
 const createSong = async (
   req: RequestWithUser & { session: Session },
@@ -13,12 +14,14 @@ const createSong = async (
     return res.status(400).json({ message: "Missing required data" });
   }
 
+  const user = await User.findOne({ email: req.session.email });
+
   console.log("Email:", req.session.email);
 
   const newSong = new Song({
     songName: req.body.songName,
     songAuthor: req.body.songAuthor,
-    user: req.session.email,
+    user: user?._id,
     songFile: {
       path: req.file.path,
       title: req.file.originalname,
