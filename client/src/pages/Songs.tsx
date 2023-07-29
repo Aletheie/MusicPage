@@ -25,13 +25,7 @@ const Songs = () => {
       <div className="w-2/3 h-screen mx-auto flex justify-center items-center flex-col">
         <h1 className="text-gray-700 font-bold text-5xl pb-5">All Songs</h1>
         {songList.length ? (
-          songList.map((song, idx) => (
-            <Track
-              key={idx}
-              songName={song.songName}
-              author={song.songAuthor}
-            />
-          ))
+          songList.map((song, idx) => <Track key={idx} song={song} />)
         ) : (
           <p className="text-gray-700 font-semibold text-2xl">
             No Songs, you can add them{" "}
