@@ -36,6 +36,26 @@ router.post(
   }
 );
 
+router.post(
+  "/songs/heart",
+  async (
+    req: Request<{}, {}, UserType> & { session: Session },
+    res: Response
+  ) => {
+    try {
+      const userFromDatabase = await User.findOne({ email: req.session.email });
+      const songsFromDatabase = await Song.find({
+        user: userFromDatabase?._id,
+        isFilledHeart: true,
+      });
+      res.send(songsFromDatabase);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    }
+  }
+);
+
 router.put("/songs", async (req: Request, res: Response) => {
   const { songId, isFilledHeart } = req.body;
   try {

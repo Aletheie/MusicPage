@@ -3,6 +3,7 @@ import Track from "./Track";
 const song = {
   songName: "Young and beautiful",
   songAuthor: "Lana Del Rey",
+  isFilledHeart: false,
   songFile: {
     path: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
     name: "SoundHelix-Song-1.mp3",
