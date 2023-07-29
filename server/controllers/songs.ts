@@ -1,8 +1,9 @@
 import Song from "../mongoDB/models/song.js";
-import { Response } from "express";
 import RequestWithUser from "../utils/RequestWithUser.js";
 import { Session } from "../utils/authMiddleware.js";
 import User from "../mongoDB/models/user.js";
+import UserType from "../utils/Login";
+import { Request, Response } from "express";
 
 const createSong = async (
   req: RequestWithUser & { session: Session },
@@ -37,4 +38,53 @@ const createSong = async (
   }
 };
 
-export { createSong };
+const getSongs = async (
+  req: Request<{}, {}, UserType> & { session: Session },
+  res: Response
+) => {
+  try {
+    const userFromDatabase = await User.findOne({ email: req.session.email });
+    const songsFromDatabase = await Song.find({
+      user: userFromDatabase?._id,
+    });
+    res.send(songsFromDatabase);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+const getHeartSongs = async (
+  req: Request<{}, {}, UserType> & { session: Session },
+  res: Response
+) => {
+  try {
+    const userFromDatabase = await User.findOne({ email: req.session.email });
+    const songsFromDatabase = await Song.find({
+      user: userFromDatabase?._id,
+      isFilledHeart: true,
+    });
+    res.send(songsFromDatabase);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+const updateHeart = async (req: Request, res: Response) => {
+  const { songId, isFilledHeart } = req.body;
+  try {
+    const updatedSong = await Song.findByIdAndUpdate(
+      songId,
+      { isFilledHeart: isFilledHeart },
+      { new: true }
+    );
+    await updatedSong?.save();
+    res.send(updatedSong);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+export { createSong, getSongs, getHeartSongs };
