@@ -87,4 +87,4 @@ const updateHeart = async (req: Request, res: Response) => {
   }
 };
 
-export { createSong, getSongs, getHeartSongs };
+export { createSong, getSongs, getHeartSongs, updateHeart };
