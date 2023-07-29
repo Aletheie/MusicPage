@@ -4,11 +4,13 @@ import "../index.css";
 import FileInput from "./FileInput";
 import TextInput from "./TextInput";
 import axios from "axios";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 const AddSongInputGroup = () => {
   const [songName, setSongName] = useState("");
   const [songAuthor, setSongAuthor] = useState("");
   const [songFile, setSongFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ const AddSongInputGroup = () => {
       alert("Please select an MP3 or WAV file");
       return;
     }
+    setLoading(true);
     const formData = new FormData();
     formData.append("songName", songName);
     formData.append("songAuthor", songAuthor);
@@ -33,13 +36,18 @@ const AddSongInputGroup = () => {
         },
       })
       .then((res) => {
+        setLoading(false);
         console.log(res);
         alert("You have successfully added a song!");
       })
       .catch((err) => {
         console.log(err);
         alert("Something went wrong, please try again");
+      })
+      .finally(() => {
+        setLoading(false);
       });
+
     setSongName("");
     setSongAuthor("");
     setSongFile(null);
@@ -52,6 +60,14 @@ const AddSongInputGroup = () => {
         method="post"
         className="flex justify-center w-full h-screen items-center relative"
       >
+        <PacmanLoader
+          color="#8b5cf6"
+          loading={loading}
+          size={20}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          className="absolute -bottom-80 left-[55%] z-10"
+        />
         <div className="w-3/4 md:w-1/2 lg:w-1/3  h-2/3 rounded-3xl shadow-xl bg-[#f4f4f4]">
           <div className="w-full bg-gradient-to-br from-fuchsia-900 via-violet-500 to-indigo-300 h-1/4  rounded-t-3xl"></div>
           <img src={cd} alt="cd image" className="floating mx-auto -mt-10" />
