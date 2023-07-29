@@ -1,33 +1,35 @@
 import Link from "./Link";
-import home from "../assets/home.svg";
-import layer from "../assets/Layers_fill.svg";
-import add from "../assets/Chat_plus_fill.svg";
-import headphone from "../assets/Headphones_fill.svg";
-import login from "../assets/Sign_in_squre_fill.svg";
+import { AiFillHeart, AiFillHome } from "react-icons/ai";
+import { BiAddToQueue, BiLogIn } from "react-icons/bi";
+import { FaLayerGroup, FaHeadphonesAlt } from "react-icons/fa";
 import Player from "./Player";
 
 const linksData = [
-  { icon: home, text: "Home", path: "/" },
-  { icon: add, text: "Add", path: "/songs/add" },
+  { icon: <AiFillHome className="text-2xl" />, text: "Home", path: "/" },
   {
-    icon: layer,
+    icon: <BiAddToQueue className="text-2xl" />,
+    text: "Add",
+    path: "/songs/add",
+  },
+  {
+    icon: <FaLayerGroup className="text-xl fill-gray-700" />,
     text: "Songs",
 
     path: "/songs",
   },
   {
-    icon: headphone,
-    text: "Lana Del Rey",
+    icon: <AiFillHeart className="text-2xl" />,
+    text: "Heart",
 
-    path: "/albums/lana-del-rey",
+    path: "/songs/heart",
   },
-  { icon: headphone, text: "Lofi", path: "/" },
+  { icon: <FaHeadphonesAlt className="text-2xl" />, text: "Lofi", path: "/" },
 ];
 
 const Navbar = () => {
   return (
     <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col justify-between">
-      <div className="">
+      <div>
         {linksData.map((link, index) => (
           <Link
             key={index}
@@ -38,7 +40,12 @@ const Navbar = () => {
         ))}
       </div>
       <Player />
-      <Link icon={login} text="Login" divParams="mb-7" path="/login" />
+      <Link
+        icon={<BiLogIn className="text-2xl" />}
+        text="Login"
+        divParams="mb-7"
+        path="/login"
+      />
     </div>
   );
 };

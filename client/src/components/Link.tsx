@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 interface Props {
-  icon: string;
+  icon: JSX.Element;
   text: string;
   divParams?: string;
   path: string;
@@ -15,7 +15,7 @@ const Link = ({ icon, text, divParams, path }: Props) => {
         divParams ? divParams : ""
       }`}
     >
-      <img src={icon} alt="svgIcon" />
+      {icon}
       <p className={`ms-3`}>{text}</p>
     </NavLink>
   );
