@@ -32,12 +32,12 @@ const Track = ({ song }: Props) => {
       <div className="bg-[#f4f4f4] w-12 h-12 rounded-lg ml-2 flex justify-center items-center">
         {isPlaying ? (
           <BsFillPauseFill
-            className="text-4xl text-[#ededed]"
+            className="text-4xl text-[#ededed] hover:text-[#e7e7e7]"
             onClick={handlePlayPauseClick}
           />
         ) : (
           <BsFillPlayFill
-            className="text-4xl text-[#ededed]"
+            className="text-4xl text-[#ededed] hover:text-[#e7e7e7]"
             onClick={handlePlayPauseClick}
           />
         )}
