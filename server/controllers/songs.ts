@@ -22,6 +22,7 @@ const createSong = async (
     songName: req.body.songName,
     songAuthor: req.body.songAuthor,
     user: user?._id,
+    isFilledHeart: false,
     songFile: {
       path: req.file.path,
       title: req.file.originalname,

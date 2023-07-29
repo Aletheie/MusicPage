@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const SongSchema = new Schema({
   songName: { type: String, required: true },
   songAuthor: { type: String, required: true },
+  isFilledHeart: { type: Boolean, required: true },
   songFile: {
     path: { type: String, required: true },
     title: { type: String, required: true },

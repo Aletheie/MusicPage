@@ -3,7 +3,6 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { SongType } from "../utils/SongType";
 import useSound from "use-sound";
-import axios from "axios";
 
 interface Props {
   song: SongType;
