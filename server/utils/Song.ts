@@ -4,6 +4,7 @@ interface SongType {
   songFile: {
     name: string;
     type: string;
+    path: string;
   };
 }
 

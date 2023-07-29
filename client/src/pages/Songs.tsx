@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Track from "../components/Track";
 import { Link } from "react-router-dom";
+import useSound from "use-sound";
 
 interface SongType {
   songName: string;
@@ -9,11 +10,18 @@ interface SongType {
   songFile: {
     name: string;
     type: string;
+    path: string;
   };
 }
 
 const Songs = () => {
+  const [currentSound, setCurrentSound] = useState<string>("");
   const [songList, setSongList] = useState([] as SongType[]);
+  const [play, { pause }] = useSound(currentSound);
+
+  const handleTrackClick = (path: string) => {
+    setCurrentSound(path);
+  };
 
   useEffect(() => {
     axios
