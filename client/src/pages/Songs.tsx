@@ -26,7 +26,7 @@ const Songs = () => {
         {songList.length === 0 && (
           <p className="text-gray-700 font-semibold text-2xl">
             No songs found. You can add them{" "}
-            <Link to="/upload" className="text-blue-500">
+            <Link to="/songs/add" className="text-blue-500">
               here
             </Link>
             .
