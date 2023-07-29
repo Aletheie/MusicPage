@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import useSound from "use-sound";
 
 interface Props {
   author: string;
@@ -7,9 +8,15 @@ interface Props {
 }
 
 const Track = ({ songName, author }: Props) => {
+  const [currentSound, setCurrentSound] = useState<string>("");
   const [isFilledHeart, setIsFilledHeart] = useState(false);
+  const [play, { pause }] = useSound(currentSound);
 
-  const handleClick = () => {
+  const handleHeartTrackClick = (path: string) => {
+    setCurrentSound(path);
+  };
+
+  const handleHeartClick = () => {
     setIsFilledHeart(!isFilledHeart);
   };
 
@@ -21,7 +28,7 @@ const Track = ({ songName, author }: Props) => {
         <p className="text-gray-700 font-medium">{author}</p>
       </div>
       <div className="ml-auto mr-5">
-        <button onClick={handleClick}>
+        <button onClick={handleHeartClick}>
           {isFilledHeart ? (
             <AiFillHeart className="text-2xl text-gray-700" />
           ) : (
