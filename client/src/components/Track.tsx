@@ -11,7 +11,7 @@ interface Props {
 
 const Track = ({ song }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isFilledHeart, setIsFilledHeart] = useState(false);
+  const [isFilledHeart, setIsFilledHeart] = useState(song.isFilledHeart);
   const [play, { pause }] = useSound(song.songFile.path);
 
   const handlePlayPauseClick = () => {
