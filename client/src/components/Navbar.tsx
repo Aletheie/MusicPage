@@ -1,29 +1,37 @@
 import Link from "./Link";
 import { AiFillHeart, AiFillHome } from "react-icons/ai";
-import { BiAddToQueue, BiLogIn } from "react-icons/bi";
-import { FaLayerGroup, FaHeadphonesAlt } from "react-icons/fa";
+import { FaLayerGroup, FaHeadphonesAlt, FaUserPlus } from "react-icons/fa";
+import { MdAddBox } from "react-icons/md";
 import Player from "./Player";
 
 const linksData = [
-  { icon: <AiFillHome className="text-2xl" />, text: "Home", path: "/" },
   {
-    icon: <BiAddToQueue className="text-2xl" />,
+    icon: <AiFillHome className="text-3xl fill-gray-600" />,
+    text: "Home",
+    path: "/",
+  },
+  {
+    icon: <MdAddBox className="text-3xl fill-gray-600" />,
     text: "Add",
     path: "/songs/add",
   },
   {
-    icon: <FaLayerGroup className="text-xl fill-gray-700" />,
+    icon: <FaLayerGroup className="text-2xl fill-gray-600 ml-0.5" />,
     text: "Songs",
 
     path: "/songs",
   },
   {
-    icon: <AiFillHeart className="text-2xl" />,
-    text: "Heart",
+    icon: <AiFillHeart className="text-3xl fill-gray-600" />,
+    text: "Hearts",
 
     path: "/songs/heart",
   },
-  { icon: <FaHeadphonesAlt className="text-2xl" />, text: "Lofi", path: "/" },
+  {
+    icon: <FaHeadphonesAlt className="text-3xl fill-gray-600" />,
+    text: "Lofi",
+    path: "/",
+  },
 ];
 
 const Navbar = () => {
@@ -41,9 +49,9 @@ const Navbar = () => {
       </div>
       <Player />
       <Link
-        icon={<BiLogIn className="text-2xl" />}
+        icon={<FaUserPlus className="text-3xl fill-gray-600" />}
         text="Login"
-        divParams="mb-7"
+        divParams="mb-9"
         path="/login"
       />
     </div>
