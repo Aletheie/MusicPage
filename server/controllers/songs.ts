@@ -4,20 +4,43 @@ import { Session } from "../utils/authMiddleware.js";
 import User from "../mongoDB/models/user.js";
 import UserType from "../utils/Login";
 import { Request, Response } from "express";
+import { body, validationResult } from "express-validator";
 
 const createSong = async (
   req: RequestWithUser & { session: Session },
   res: Response
 ) => {
-  if (!req.file) {
-    return res.status(400).json({ message: "No file uploaded" });
-  } else if (!req.body.songName || !req.body.songAuthor) {
-    return res.status(400).json({ message: "Missing required data" });
+  await body("songName")
+    .notEmpty()
+    .withMessage("Song name is required")
+    .run(req);
+  await body("songAuthor")
+    .notEmpty()
+    .withMessage("Song author is required")
+    .run(req);
+  await body("songFile")
+    .custom((value, { req }) => {
+      if (!req.file) {
+        throw new Error("Song file is required");
+      }
+      if (!/\.(mp3|wav)$/i.test(req.file.originalname)) {
+        throw new Error("Invalid file type. Please select an MP3 or WAV file");
+      }
+      return true;
+    })
+    .run(req);
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
 
   const user = await User.findOne({ email: req.session.email });
 
   console.log("Email:", req.session.email);
+
+  if (!req.file)
+    return res.status(400).json({ message: "Song file is required" });
 
   const newSong = new Song({
     songName: req.body.songName,
