@@ -32,6 +32,9 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       .catch((err) => {
         console.log(err);
       });
+    setUsername("");
+    setEmail("");
+    setPassword("");
   };
 
   return (
