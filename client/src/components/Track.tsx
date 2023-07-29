@@ -9,10 +9,19 @@ interface Props {
 }
 
 const Track = ({ song }: Props) => {
-  const [currentSound, setCurrentSound] = useState<string>("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFilledHeart, setIsFilledHeart] = useState(false);
-  const [play, { pause }] = useSound(currentSound);
+  const [play, { pause }] = useSound(song.songFile.path);
+
+  const handlePlayPauseClick = () => {
+    if (isPlaying) {
+      pause();
+      setIsPlaying(false);
+    } else {
+      play();
+      setIsPlaying(true);
+    }
+  };
 
   const handleHeartClick = () => {
     setIsFilledHeart(!isFilledHeart);
@@ -24,20 +33,12 @@ const Track = ({ song }: Props) => {
         {isPlaying ? (
           <BsFillPauseFill
             className="text-4xl text-[#ededed]"
-            onClick={() => {
-              setCurrentSound(song.songFile.path);
-              pause();
-              setIsPlaying(false);
-            }}
+            onClick={handlePlayPauseClick}
           />
         ) : (
           <BsFillPlayFill
             className="text-4xl text-[#ededed]"
-            onClick={() => {
-              setCurrentSound(song.songFile.path);
-              play();
-              setIsPlaying(true);
-            }}
+            onClick={handlePlayPauseClick}
           />
         )}
       </div>
