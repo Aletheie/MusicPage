@@ -26,13 +26,17 @@ const Track = ({ song }: Props) => {
 
   const handleHeartClick = () => {
     setIsFilledHeart(!isFilledHeart);
-    axios
-      .post("http://localhost:8080/songs/heart", {
-        songId: song._id,
-        isFilledHeart: !isFilledHeart,
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    // axios
+    //   .post(
+    //     "http://localhost:8080/songs/heart",
+    //     {
+    //       songId: song._id,
+    //       isFilledHeart: !isFilledHeart,
+    //     },
+    //     { withCredentials: true }
+    //   )
+    //   .then((res) => console.log(res))
+    //   .catch((err) => console.log(err));
   };
 
   return (
