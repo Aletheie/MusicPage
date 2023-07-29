@@ -8,10 +8,18 @@ import axios from "axios";
 const AddSongInputGroup = () => {
   const [songName, setSongName] = useState("");
   const [songAuthor, setSongAuthor] = useState("");
-  const [songFile, setSongFile] = useState(null as File | null);
+  const [songFile, setSongFile] = useState<File | null>(null);
 
   const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    if (!songName || !songAuthor || !songFile) {
+      alert("Please fill in all required fields");
+      return;
+    }
+    if (!/\.(mp3|wav)$/i.test(songFile.name)) {
+      alert("Please select an MP3 or WAV file");
+      return;
+    }
     const formData = new FormData();
     formData.append("songName", songName);
     formData.append("songAuthor", songAuthor);
@@ -26,9 +34,11 @@ const AddSongInputGroup = () => {
       })
       .then((res) => {
         console.log(res);
+        alert("You have successfully added a song!");
       })
       .catch((err) => {
         console.log(err);
+        alert("Something went wrong, please try again");
       });
     setSongName("");
     setSongAuthor("");

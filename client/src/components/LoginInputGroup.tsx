@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../index.css";
 import TextInput from "./TextInput";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 interface Props {
   icon: string;
@@ -24,10 +24,10 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       alert("Please enter a valid email address");
       return;
     }
-    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/.test(password)) {
-      alert("Please enter a password that meets the minimum requirements");
-      return;
-    }
+    // if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/.test(password)) {
+    //   alert("Please enter a password that meets the minimum requirements");
+    //   return;
+    // }
     axios
       .post(
         "http://localhost:8080/api/login",
@@ -40,9 +40,11 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       )
       .then((res) => {
         console.log(res);
+        alert("You have successfully logged in!");
       })
-      .catch((err) => {
+      .catch((err: AxiosError) => {
         console.log(err);
+        alert("Something went wrong, please try again");
       });
     setUsername("");
     setEmail("");
