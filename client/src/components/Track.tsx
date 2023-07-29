@@ -3,6 +3,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { SongType } from "../utils/SongType";
 import useSound from "use-sound";
+import axios from "axios";
 
 interface Props {
   song: SongType;
@@ -25,17 +26,17 @@ const Track = ({ song }: Props) => {
 
   const handleHeartClick = () => {
     setIsFilledHeart(!isFilledHeart);
-    // axios
-    //   .post(
-    //     "http://localhost:8080/songs/heart",
-    //     {
-    //       songId: song._id,
-    //       isFilledHeart: !isFilledHeart,
-    //     },
-    //     { withCredentials: true }
-    //   )
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
+    axios
+      .put(
+        "http://localhost:8080/songs/",
+        {
+          songId: song._id,
+          isFilledHeart: !isFilledHeart,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (

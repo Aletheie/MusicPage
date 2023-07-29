@@ -36,10 +36,20 @@ router.post(
   }
 );
 
-// router.post("/songs/heart", async (req, res) => {
-// const {songId, isFilledHeart} = req.body;
-//   try {
-
-//     )
+router.put("/songs", async (req: Request, res: Response) => {
+  const { songId, isFilledHeart } = req.body;
+  try {
+    const updatedSong = await Song.findByIdAndUpdate(
+      songId,
+      { isFilledHeart: isFilledHeart },
+      { new: true }
+    );
+    await updatedSong?.save();
+    res.send(updatedSong);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 export default router;
