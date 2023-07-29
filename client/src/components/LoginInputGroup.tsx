@@ -16,6 +16,18 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    if (!email || !password) {
+      alert("Please fill in all required fields");
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/.test(password)) {
+      alert("Please enter a password that meets the minimum requirements");
+      return;
+    }
     axios
       .post(
         "http://localhost:8080/api/login",
