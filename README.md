@@ -4,7 +4,7 @@ Web application for managing songs. It allows users to add, view, add songs to f
 
 Additionally, this project is still a work in progress and is being used as a reference for future projects.
 
-![HomePage](/Preview/HomePage.png)
+![HomePage](/.github/img/Hearts.png)
 
 ## Features
 
@@ -49,9 +49,9 @@ If you would like to contribute to this project, please follow these steps:
 
 ## Preview
 
-![AddSongs](/Preview/AddSongs.png)
-![Songs](/Preview/Songs.png)
-![Hearts](/Preview/Hearts.png)
+![AddSongs](/.github/img/AddSongs.png)
+![Songs](/.github/img/Songs.png)
+![Hearts](/.github/img/Hearts.png)
 
 ## License
 
