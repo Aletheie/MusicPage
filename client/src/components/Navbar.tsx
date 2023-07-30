@@ -11,6 +11,8 @@ import Player from "./Player";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+type Login = "Logged In" | "Logged Out";
+
 const linksData = [
   {
     icon: <AiFillHome className="text-3xl fill-gray-600" />,
@@ -42,21 +44,21 @@ const linksData = [
 ];
 
 const Navbar = () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState<Login>("Logged Out");
   useEffect(() => {
     axios
       .post("http://localhost:8080/api/login/auth", "hii", {
         withCredentials: true,
       })
       .then((res) => {
-        if (res.data === true) {
-          setIsLogged(true);
+        if (res.data === "Logged In") {
+          setIsLogged("Logged In");
         } else {
-          setIsLogged(false);
+          setIsLogged("Logged Out");
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [isLogged]);
 
   const handleClick = () => {
     axios
@@ -64,10 +66,11 @@ const Navbar = () => {
         withCredentials: true,
       })
       .then((res) => {
-        if (res.data === true) {
-          setIsLogged(true);
+        alert(res.data);
+        if (res.data === "Logged Out") {
+          setIsLogged("Logged Out");
         } else {
-          setIsLogged(true);
+          setIsLogged("Logged In");
         }
       })
       .catch((err) => console.log(err));
@@ -86,7 +89,7 @@ const Navbar = () => {
         ))}
       </div>
       <Player />
-      {!isLogged ? (
+      {isLogged === "Logged Out" ? (
         <Link
           icon={<FaUserPlus className="text-3xl fill-gray-600" />}
           text="Login"
