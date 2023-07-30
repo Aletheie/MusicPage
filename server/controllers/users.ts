@@ -55,4 +55,25 @@ const createUser = async (
   }
 };
 
-export { createUser };
+const login = (
+  req: Request<{}, {}, UserType> & { session: Session },
+  res: Response
+) => {
+  req.session.email ? res.send("Logged In") : res.send("Logged Out");
+};
+
+const logout = (
+  req: Request<{}, {}, UserType> & { session: Session },
+  res: Response
+) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.clearCookie("sid");
+      res.send("Logged Out");
+    }
+  });
+};
+
+export { createUser, login, logout };
