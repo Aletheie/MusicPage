@@ -1,8 +1,15 @@
 import Link from "./Link";
 import { AiFillHeart, AiFillHome } from "react-icons/ai";
-import { FaLayerGroup, FaHeadphonesAlt, FaUserPlus } from "react-icons/fa";
+import {
+  FaLayerGroup,
+  FaHeadphonesAlt,
+  FaUserPlus,
+  FaUserMinus,
+} from "react-icons/fa";
 import { MdAddBox } from "react-icons/md";
 import Player from "./Player";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const linksData = [
   {
@@ -35,6 +42,22 @@ const linksData = [
 ];
 
 const Navbar = () => {
+  const [isLogged, setIsLogged] = useState(false);
+  useEffect(() => {
+    axios
+      .post("http://localhost:8080/api/login/auth", "hii", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.data === true) {
+          setIsLogged(true);
+        } else {
+          setIsLogged(false);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col justify-between">
       <div>
@@ -48,12 +71,21 @@ const Navbar = () => {
         ))}
       </div>
       <Player />
-      <Link
-        icon={<FaUserPlus className="text-3xl fill-gray-600" />}
-        text="Login"
-        divParams="mb-9"
-        path="/login"
-      />
+      {!isLogged ? (
+        <Link
+          icon={<FaUserPlus className="text-3xl fill-gray-600" />}
+          text="Login"
+          divParams="mb-9"
+          path="/login"
+        />
+      ) : (
+        <Link
+          icon={<FaUserMinus className="text-3xl fill-gray-600" />}
+          text="Logout"
+          divParams="mb-9"
+          path="/logout"
+        />
+      )}
     </div>
   );
 };

@@ -9,10 +9,6 @@ const createUser = async (
   req: Request<{}, {}, UserType> & { session: Session },
   res: Response
 ) => {
-  await body("username")
-    .notEmpty()
-    .withMessage("Username is required")
-    .run(req);
   await body("email").isEmail().withMessage("Invalid email address").run(req);
   await body("password")
     .isLength({ min: 8 })
