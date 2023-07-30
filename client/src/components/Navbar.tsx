@@ -58,6 +58,21 @@ const Navbar = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleClick = () => {
+    axios
+      .post("http://localhost:8080/api/logout", "hii", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.data === true) {
+          setIsLogged(true);
+        } else {
+          setIsLogged(true);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="w-full hidden lg:visible lg:col-span-2 bg-[#ededed] lg:flex flex-col justify-between">
       <div>
@@ -79,12 +94,14 @@ const Navbar = () => {
           path="/login"
         />
       ) : (
-        <Link
-          icon={<FaUserMinus className="text-3xl fill-gray-600" />}
-          text="Logout"
-          divParams="mb-9"
-          path="/logout"
-        />
+        <div onClick={handleClick}>
+          <Link
+            icon={<FaUserMinus className="text-3xl fill-gray-600" />}
+            text="Logout"
+            divParams="mb-9"
+            path="/"
+          />
+        </div>
       )}
     </div>
   );
