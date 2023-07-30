@@ -53,6 +53,10 @@ If you would like to contribute to this project, please follow these steps:
 ![Songs](/.github/img/Songs.png)
 ![Hearts](/.github/img/Hearts.png)
 
+## Link to original design
+
+[Aletheie/MyDesigns](https://github.com/Aletheie/MyDesigns)
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
