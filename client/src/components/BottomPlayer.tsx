@@ -13,7 +13,11 @@ import useMusicStore from "../stores/musicStore";
 
 const BottomPlayer = () => {
   const [hoveredIcon, setHoveredIcon] = useState(null as string | null);
-  const { isPlaying, song, setSong, setIsPlaying } = useMusicStore();
+  const { isPlaying, song, setIsPlaying } = useMusicStore((s) => ({
+    isPlaying: s.isPlaying,
+    song: s.song,
+    setIsPlaying: s.setIsPlaying,
+  }));
   const [play, { pause }] = useSound(song.songFile.path);
 
   const handleMouseOver = (iconName: string | null) => {
