@@ -2,16 +2,34 @@ import { create } from "zustand";
 
 interface Store {
   isPlaying: boolean;
-  songName?: string;
+  song: {
+    songName: string;
+    songAuthor: string;
+    songFile: {
+      path: string;
+    };
+  };
   setIsPlaying: () => void;
-  setSongName: (songName: string) => void;
+  setSong: (song: {
+    songName: string;
+    songAuthor: string;
+    songFile: {
+      path: string;
+    };
+  }) => void;
 }
 
 const useMusicStore = create<Store>((set) => ({
   isPlaying: false,
-  songName: undefined,
+  song: {
+    songName: "",
+    songAuthor: "",
+    songFile: {
+      path: "",
+    },
+  },
   setIsPlaying: () => set((state) => ({ isPlaying: !state.isPlaying })),
-  setSongName: (songName) => set(() => ({ songName })),
+  setSong: (song) => set(() => ({ song })),
 }));
 
 export default useMusicStore;

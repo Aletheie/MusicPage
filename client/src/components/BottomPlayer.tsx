@@ -11,12 +11,10 @@ import { useState } from "react";
 import useSound from "use-sound";
 import useMusicStore from "../stores/musicStore";
 
-import music from "../assets/music/fairytale.mp3";
-
 const BottomPlayer = () => {
   const [hoveredIcon, setHoveredIcon] = useState(null as string | null);
-  const [play, { pause }] = useSound(music);
-  const { isPlaying, setIsPlaying } = useMusicStore();
+  const { isPlaying, song, setSong, setIsPlaying } = useMusicStore();
+  const [play, { pause }] = useSound(song.songFile.path);
 
   const handleMouseOver = (iconName: string | null) => {
     setHoveredIcon(iconName);
