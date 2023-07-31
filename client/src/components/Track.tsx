@@ -4,6 +4,7 @@ import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { SongType } from "../utils/SongType";
 import useSound from "use-sound";
 import axios from "axios";
+import useMusicStore from "../stores/musicStore";
 
 interface Props {
   song: SongType;
@@ -13,9 +14,11 @@ const Track = ({ song }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFilledHeart, setIsFilledHeart] = useState(song.isFilledHeart);
   const [play, { pause }] = useSound(song.songFile.path);
+  const { setSong } = useMusicStore((s) => ({ setSong: s.setSong }));
 
   const handlePlayPauseClick = () => {
     if (isPlaying) {
+      setSong(song);
       pause();
       setIsPlaying(false);
     } else {
