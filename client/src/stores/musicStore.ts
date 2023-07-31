@@ -1,22 +1,11 @@
 import { create } from "zustand";
+import { SongType } from "../utils/SongType";
 
 interface Store {
   isPlaying: boolean;
-  song: {
-    songName: string;
-    songAuthor: string;
-    songFile: {
-      path: string;
-    };
-  };
+  song: SongType;
   setIsPlaying: () => void;
-  setSong: (song: {
-    songName: string;
-    songAuthor: string;
-    songFile: {
-      path: string;
-    };
-  }) => void;
+  setSong: (song: SongType) => void;
 }
 
 const useMusicStore = create<Store>((set) => ({
@@ -24,7 +13,11 @@ const useMusicStore = create<Store>((set) => ({
   song: {
     songName: "",
     songAuthor: "",
+    _id: "",
+    isFilledHeart: false,
     songFile: {
+      name: "",
+      type: "",
       path: "",
     },
   },

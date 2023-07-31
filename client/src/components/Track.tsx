@@ -12,7 +12,9 @@ interface Props {
 
 const Track = ({ song }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isFilledHeart, setIsFilledHeart] = useState(song.isFilledHeart);
+  const [isFilledHeart, setIsFilledHeart] = useState(
+    song?.isFilledHeart || false
+  );
   const [play, { pause }] = useSound(song.songFile.path);
   const { setSong } = useMusicStore((s) => ({ setSong: s.setSong }));
 
@@ -30,17 +32,19 @@ const Track = ({ song }: Props) => {
 
   const handleHeartClick = () => {
     setIsFilledHeart(!isFilledHeart);
-    axios
-      .put(
-        "http://localhost:8080/songs/",
-        {
-          songId: song._id,
-          isFilledHeart: !isFilledHeart,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    if (song) {
+      axios
+        .put(
+          "http://localhost:8080/songs/",
+          {
+            songId: song?._id,
+            isFilledHeart: !isFilledHeart,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
