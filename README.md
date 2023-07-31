@@ -27,7 +27,7 @@ To get started with this project, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Install the dependencies using `npm install`.
-3. Configure your environment variables by creating a `.env` file in the root directory of the project. You can use the `.env.example` file as a template.
+3. Configure your environment variables by creating a `.env` file in the server directory of the project. You can use the `.env.example` file as a template.
 4. Start the client using `npm start`.
 5. Open your browser and navigate to `http://localhost:3000`.
 
