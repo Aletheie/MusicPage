@@ -16,17 +16,22 @@ const Track = ({ song }: Props) => {
     song?.isFilledHeart || false
   );
   const [play, { pause }] = useSound(song.songFile.path);
-  const { setSong } = useMusicStore((s) => ({ setSong: s.setSong }));
+  const { setSong, setIsGlobalPlaying } = useMusicStore((s) => ({
+    setSong: s.setSong,
+    setIsGlobalPlaying: s.setIsGlobalPlaying,
+  }));
 
   const handlePlayPauseClick = () => {
     if (isPlaying) {
       setSong(song);
       pause();
       setIsPlaying(false);
+      setIsGlobalPlaying();
     } else {
       setSong(song);
       play();
       setIsPlaying(true);
+      setIsGlobalPlaying();
     }
   };
 

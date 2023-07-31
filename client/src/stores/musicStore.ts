@@ -2,14 +2,14 @@ import { create } from "zustand";
 import { SongType } from "../utils/SongType";
 
 interface Store {
-  isPlaying: boolean;
+  isGlobalPlaying: boolean;
   song: SongType;
-  setIsPlaying: () => void;
+  setIsGlobalPlaying: () => void;
   setSong: (song: SongType) => void;
 }
 
 const useMusicStore = create<Store>((set) => ({
-  isPlaying: false,
+  isGlobalPlaying: false,
   song: {
     songName: "",
     songAuthor: "",
@@ -21,7 +21,8 @@ const useMusicStore = create<Store>((set) => ({
       path: "",
     },
   },
-  setIsPlaying: () => set((state) => ({ isPlaying: !state.isPlaying })),
+  setIsGlobalPlaying: () =>
+    set((state) => ({ isGlobalPlaying: !state.isGlobalPlaying })),
   setSong: (song) => set(() => ({ song })),
 }));
 

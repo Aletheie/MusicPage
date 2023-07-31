@@ -13,10 +13,10 @@ import useMusicStore from "../stores/musicStore";
 
 const BottomPlayer = () => {
   const [hoveredIcon, setHoveredIcon] = useState(null as string | null);
-  const { isPlaying, song, setIsPlaying } = useMusicStore((s) => ({
-    isPlaying: s.isPlaying,
+  const { isGlobalPlaying, song, setIsGlobalPlaying } = useMusicStore((s) => ({
+    isGlobalPlaying: s.isGlobalPlaying,
     song: s.song,
-    setIsPlaying: s.setIsPlaying,
+    setIsGlobalPlaying: s.setIsGlobalPlaying,
   }));
   const [play, { pause }] = useSound(song.songFile.path);
 
@@ -29,9 +29,9 @@ const BottomPlayer = () => {
   };
 
   const handleClick = () => {
-    if (isPlaying) pause();
+    if (isGlobalPlaying) pause();
     else play();
-    setIsPlaying();
+    setIsGlobalPlaying();
   };
 
   return (
@@ -43,7 +43,7 @@ const BottomPlayer = () => {
           hoveredIcon === "caretLeft" ? "text-black" : ""
         }`}
       />
-      {isPlaying ? (
+      {isGlobalPlaying ? (
         <AiFillPauseCircle
           size={60}
           onMouseOver={() => handleMouseOver("pause")}
