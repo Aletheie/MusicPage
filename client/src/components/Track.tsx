@@ -22,6 +22,7 @@ const Track = ({ song }: Props) => {
       pause();
       setIsPlaying(false);
     } else {
+      setSong(song);
       play();
       setIsPlaying(true);
     }
