@@ -44,7 +44,7 @@ const Track = ({ song }: Props) => {
   };
 
   return (
-    <div className=" cursor-pointer w-4/5 md:w-8/12 mt-6 md:mt-4 h-16 rounded-xl bg-[#ededed] hover:bg-[#e7e7e7] flex items-center">
+    <div className=" cursor-pointer w-4/5 md:w-8/12 mt-6 md:mt-4 h-16 rounded-xl bg-[#ededed] hover:bg-[#e7e7e7] flex items-center z-10">
       <div className="bg-[#f4f4f4] w-12 h-12 rounded-lg ml-2 flex justify-center items-center">
         {isPlaying ? (
           <BsFillPauseFill
