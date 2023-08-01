@@ -1,8 +1,9 @@
 import Song from "../mongoDB/models/song.js";
 import User from "../mongoDB/models/user.js";
-import { NextFunction, Response } from "express";
+import { NextFunction, Response, Request } from "express";
 import RequestWithUser from "./RequestWithUser.js";
 import { Session } from "./authMiddleware.js";
+import SongType from "./Song.js";
 
 const checkSongLimit = async (
   req: RequestWithUser & { session: Session },
@@ -20,4 +21,20 @@ const checkSongLimit = async (
   }
 };
 
-export { checkSongLimit };
+const checkSongSuffixAndSize = (
+  req: Request<{}, {}, SongType>,
+  res: Response,
+  next: NextFunction
+) => {
+  const { songFile } = req.body;
+  const songSuffix = songFile.name.split(".").pop();
+  if (songSuffix !== "mp3") {
+    res.status(400).json({ message: "Song must be an mp3 file" });
+  } else if (req.file && req.file.size > 10000000) {
+    res.status(400).json({ message: "Song must be less than 10mb" });
+  } else {
+    next();
+  }
+};
+
+export { checkSongLimit, checkSongSuffixAndSize };
