@@ -5,12 +5,14 @@ import Login from "./pages/Login";
 import AddSong from "./pages/AddSong";
 import HeartPage from "./pages/HeartPage";
 import Songs from "./pages/Songs";
+import ErrorPage from "./pages/ErrorPage";
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "/songs", element: <Songs /> },
