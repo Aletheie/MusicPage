@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/react-icons": "^3.0.0",
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -23,6 +22,7 @@
     "zustand": "^4.3.9"
   },
   "devDependencies": {
+    "@types/react-icons": "^3.0.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@types/uuid": "^9.0.2",
