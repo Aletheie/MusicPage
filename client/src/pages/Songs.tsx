@@ -3,16 +3,23 @@ import { useEffect, useState } from "react";
 import Track from "../components/Track";
 import { SongType } from "../utils/SongType";
 import { Link } from "react-router-dom";
+import useMusicStore from "../stores/musicStore";
 
 const Songs = () => {
   const [songList, setSongList] = useState<SongType[]>([]);
+  const { setGlobalSongList } = useMusicStore((s) => ({
+    setGlobalSongList: s.setGlobalSongList,
+  }));
 
   useEffect(() => {
     axios
       .post<SongType[]>("http://localhost:8080/songs", "hii", {
         withCredentials: true,
       })
-      .then((res) => setSongList(res.data))
+      .then((res) => {
+        setSongList(res.data);
+        setGlobalSongList(res.data);
+      })
       .catch((err) => console.log(err));
   }, []);
 

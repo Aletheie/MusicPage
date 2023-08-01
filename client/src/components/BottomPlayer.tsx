@@ -13,12 +13,22 @@ import useMusicStore from "../stores/musicStore";
 
 const BottomPlayer = () => {
   const [hoveredIcon, setHoveredIcon] = useState(null as string | null);
-  const { isGlobalPlaying, song, setIsGlobalPlaying } = useMusicStore((s) => ({
-    isGlobalPlaying: s.isGlobalPlaying,
-    song: s.song,
-    setIsGlobalPlaying: s.setIsGlobalPlaying,
-  }));
+  const { isGlobalPlaying, song, setSong, setIsGlobalPlaying, globalSongList } =
+    useMusicStore((s) => ({
+      isGlobalPlaying: s.isGlobalPlaying,
+      song: s.song,
+      setIsGlobalPlaying: s.setIsGlobalPlaying,
+      globalSongList: s.globalSongList,
+      setSong: s.setSong,
+    }));
   const [play, { pause }] = useSound(song.songFile.path);
+
+  const getRandomSong = () => {
+    if (globalSongList.length === 0) return null;
+    const randomSong =
+      globalSongList[Math.floor(Math.random() * globalSongList.length)];
+    return randomSong;
+  };
 
   const handleMouseOver = (iconName: string | null) => {
     setHoveredIcon(iconName);
@@ -34,11 +44,19 @@ const BottomPlayer = () => {
     setIsGlobalPlaying();
   };
 
+  const playSong = () => {
+    if (isGlobalPlaying) pause();
+    const randomSong = getRandomSong();
+    setSong(randomSong || song);
+    setIsGlobalPlaying();
+  };
+
   return (
     <div className="w-11/12 absolute bottom-7 left-0 right-0 m-auto h-16 rounded-xl bg-[#ededed] flex justify-center items-center gap-3 text-[#4A4A4A]">
       <AiFillCaretLeft
         onMouseOver={() => handleMouseOver("caretLeft")}
         onMouseOut={handleMouseOut}
+        onClick={playSong}
         className={`h-4 cursor-pointer ${
           hoveredIcon === "caretLeft" ? "text-black" : ""
         }`}
@@ -67,6 +85,7 @@ const BottomPlayer = () => {
       <AiFillCaretRight
         onMouseOver={() => handleMouseOver("caretRight")}
         onMouseOut={handleMouseOut}
+        onClick={playSong}
         className={`h-4 cursor-pointer ${
           hoveredIcon === "caretRight" ? "text-black" : ""
         }`}
