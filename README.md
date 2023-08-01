@@ -1,7 +1,6 @@
 # MusicPage
 
 Web application for managing songs. It allows users to add, view, add songs to favorites and also log in and out.
-
 Additionally, this project is still a work in progress and is being used as a reference for future projects.
 
 ![HomePage](/.github/img/HomePage.png)

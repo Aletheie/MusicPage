@@ -45,7 +45,6 @@ const BottomPlayer = () => {
     if (isGlobalPlaying) await pause();
     const randomSong = getRandomSong();
     setSong(randomSong);
-    console.log(randomSong || "No song name found");
   };
 
   return (
