@@ -21,7 +21,7 @@ const BottomPlayer = () => {
   const [play, { pause }] = useSound(song.songFile.path);
 
   const getRandomSong = () => {
-    if (globalSongList.length === 0) return null;
+    if (!globalSongList.length) return song;
     const randomSong =
       globalSongList[Math.floor(Math.random() * globalSongList.length)];
     return randomSong;
@@ -35,17 +35,17 @@ const BottomPlayer = () => {
     setHoveredIcon(null);
   };
 
-  const handleClick = () => {
-    if (isGlobalPlaying) pause();
-    else play();
+  const handleClick = async () => {
+    if (isGlobalPlaying) await pause();
+    else await play();
     setIsGlobalPlaying();
   };
 
-  const playSong = () => {
-    if (isGlobalPlaying) pause();
+  const playSong = async () => {
+    if (isGlobalPlaying) await pause();
     const randomSong = getRandomSong();
-    setSong(randomSong || song);
-    setIsGlobalPlaying();
+    setSong(randomSong);
+    console.log(randomSong || "No song name found");
   };
 
   return (
