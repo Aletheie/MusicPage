@@ -8,7 +8,10 @@ import {
   updateHeart,
 } from "../controllers/songs.js";
 import { requireAuth } from "../utils/authMiddleware.js";
-import { checkSongLimit } from "../utils/songMiddleware.js";
+import {
+  checkSongLimit,
+  checkSongSuffixAndSize,
+} from "../utils/songMiddleware.js";
 
 dotenv.config();
 
@@ -20,6 +23,7 @@ router.post(
   "/api/songs",
   requireAuth,
   checkSongLimit,
+  checkSongSuffixAndSize,
   uploadSingle,
   createSong
 );

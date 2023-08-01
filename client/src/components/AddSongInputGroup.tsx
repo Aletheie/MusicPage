@@ -18,8 +18,8 @@ const AddSongInputGroup = () => {
       alert("Please fill in all required fields");
       return;
     }
-    if (!/\.(mp3|wav)$/i.test(songFile.name)) {
-      alert("Please select an MP3 or WAV file");
+    if (!/\.(mp3)$/i.test(songFile.name)) {
+      alert("Please select an MP3");
       return;
     }
     setLoading(true);

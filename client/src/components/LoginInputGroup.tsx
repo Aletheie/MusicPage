@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../index.css";
 import TextInput from "./TextInput";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 interface Props {
   icon: string;
@@ -42,9 +42,9 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
         console.log(res);
         alert("You have successfully logged in!");
       })
-      .catch((err: AxiosError) => {
+      .catch((err) => {
         console.log(err);
-        alert("Something went wrong, please try again");
+        alert(err.response.data.message || "Something went wrong");
       });
     setUsername("");
     setEmail("");
