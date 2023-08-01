@@ -42,7 +42,7 @@ const AddSongInputGroup = () => {
       })
       .catch((err) => {
         console.log(err);
-        alert("Something went wrong, please try again");
+        alert(err.response.data.message || "Something went wrong");
       })
       .finally(() => {
         setLoading(false);
