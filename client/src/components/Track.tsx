@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { SongType } from "../utils/SongType";
@@ -16,10 +16,20 @@ const Track = ({ song }: Props) => {
     song?.isFilledHeart || false
   );
   const [play, { pause }] = useSound(song.songFile.path);
-  const { setSong, setIsGlobalPlaying } = useMusicStore((s) => ({
-    setSong: s.setSong,
-    setIsGlobalPlaying: s.setIsGlobalPlaying,
-  }));
+  const { setSong, setIsGlobalPlaying, isGlobalPlaying } = useMusicStore(
+    (s) => ({
+      setSong: s.setSong,
+      setIsGlobalPlaying: s.setIsGlobalPlaying,
+      isGlobalPlaying: s.isGlobalPlaying,
+    })
+  );
+
+  useEffect(() => {
+    if (!isGlobalPlaying) {
+      setIsPlaying(false);
+      pause();
+    }
+  }, [isGlobalPlaying]);
 
   const handlePlayPauseClick = () => {
     if (isPlaying) {
