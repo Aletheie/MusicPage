@@ -8,6 +8,7 @@ import {
   updateHeart,
 } from "../controllers/songs.js";
 import { requireAuth } from "../utils/authMiddleware.js";
+import { checkSongLimit } from "../utils/songMiddleware.js";
 
 dotenv.config();
 
@@ -15,7 +16,13 @@ const router = express.Router();
 
 const uploadSingle = upload().single("songFile");
 
-router.post("/api/songs", requireAuth, uploadSingle, createSong);
+router.post(
+  "/api/songs",
+  requireAuth,
+  checkSongLimit,
+  uploadSingle,
+  createSong
+);
 
 router.post("/songs", getSongs);
 
