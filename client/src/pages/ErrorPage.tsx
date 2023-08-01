@@ -2,6 +2,10 @@ import service from "../assets/icons8-services-256.png";
 import "../index.css";
 
 const ErrorPage = () => {
+  const handleClick = () => {
+    window.location.href = "/";
+  };
+
   return (
     <div className="w-full h-screen flex items-center justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
       <div className="xl:pt-24 w-full xl:w-1/2 pb-12 lg:pb-0">
@@ -13,7 +17,10 @@ const ErrorPage = () => {
             Sorry about that! Please visit our hompage to get where you need to
             go.
           </p>
-          <button className="sm:w-full lg:w-auto my-2 border rounded-3xl mt-3 py-3 px-6 text-center bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50">
+          <button
+            onClick={handleClick}
+            className="sm:w-full lg:w-auto my-2 border rounded-3xl mt-3 py-3 px-6 text-center bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50"
+          >
             Take me there!
           </button>
         </div>
