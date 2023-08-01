@@ -21,20 +21,16 @@ const checkSongLimit = async (
   }
 };
 
-const checkSongSuffixAndSize = (
+const checkSongSize = (
   req: Request<{}, {}, SongType>,
   res: Response,
   next: NextFunction
 ) => {
-  const { songFile } = req.body;
-  const songSuffix = songFile.name.split(".").pop();
-  if (songSuffix !== "mp3") {
-    res.status(400).json({ message: "Song must be an mp3 file" });
-  } else if (req.file && req.file.size > 10000000) {
+  if (req.file && req.file.size > 10000000) {
     res.status(400).json({ message: "Song must be less than 10mb" });
   } else {
     next();
   }
 };
 
-export { checkSongLimit, checkSongSuffixAndSize };
+export { checkSongLimit, checkSongSize };
