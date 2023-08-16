@@ -24,10 +24,11 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       alert("Please enter a valid email address");
       return;
     }
-    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
-      alert("Please enter a password that meets the minimum requirements");
-      return;
-    }
+    // if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
+    //   alert("Please enter a password that meets the minimum requirements");
+    //   return;
+    // }
+
     axios
       .post(
         "http://localhost:8080/api/login",
@@ -44,7 +45,7 @@ const LoginInputGroup = ({ icon, buttonText, oneMoreInput }: Props) => {
       })
       .catch((err: AxiosError) => {
         console.log(err);
-        alert(err.response?.statusText || "Something went wrong");
+        alert(err.response?.data || "Something went wrong");
       });
     setUsername("");
     setEmail("");

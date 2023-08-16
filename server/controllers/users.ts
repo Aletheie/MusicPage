@@ -3,22 +3,11 @@ import UserType from "../utils/Login";
 import bcrypt from "bcryptjs";
 import User from "../mongoDB/models/user.js";
 import { Session } from "../utils/authMiddleware.js";
-import { body, validationResult } from "express-validator";
 
 const createUser = async (
   req: Request<{}, {}, UserType> & { session: Session },
   res: Response
 ) => {
-  await body("email").isEmail().withMessage("Invalid email address").run(req);
-  await body("password")
-    .isLength({ min: 8 })
-    .withMessage("Password must be at least 8 characters long")
-    .run(req);
-
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
   const { username, password, email } = req.body;
 
   if (username) {
