@@ -39,7 +39,9 @@ app.get("/", (req, res) => {
 
 const startServer = async () => {
   try {
-    await connectDB("mongodb://127.0.0.1:27017/musicPage");
+    await connectDB(
+      `mongodb+srv://a26372083:${process.env.MONGO_PASSWORD}@cluster0.legmryw.mongodb.net/`
+    );
     app.listen(process.env.PORT, () => {
       console.log(`Server is listening on port ${process.env.PORT}`);
     });
